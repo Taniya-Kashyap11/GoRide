@@ -1,6 +1,7 @@
 const Captain=require("../Models/Captain")
 const captainService=require('../services/captainService');
 const {validationResult}=require("express-validator");
+const blacklistToken=require("../Models/blacklistToken");
 async function registerCaptain(req,res,next){
     const errors=validationResult(req);
     if(!errors.isEmpty()){
