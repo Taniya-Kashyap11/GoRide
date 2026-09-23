@@ -41,11 +41,11 @@ async function loginUser(req,res,next){
     res.status(200).json({token,user});
 }
 async function userProfile(req,res,next){
-        res.status(200).json(req.user);
+        res.status(200).json({user:req.user});
 }
 async function logoutUser(req,res,next){
         res.clearCookie('token');
-        const token=req.cookies.token || rq.headers.authorization.split(' ')[1];
+        const token=req.cookies.token || req.headers.authorization.split(' ')[1];
         await blacklistToken.create({token});
         res.status(200).json({message : 'Logged out'});
 }
