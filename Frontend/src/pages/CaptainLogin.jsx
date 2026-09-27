@@ -16,7 +16,7 @@ const CaptainLogin = () => {
   return (
     <div className="p-7 h-screen flex flex-col justify-between">
       <div>
-        <img src="" alt="logo" />
+        <img src="logo.jpg" alt="logo" />
       <form onSubmit={(e)=>{submitHandler(e)}}>
        <h3 className="text-lg font-medium">What's your email</h3>
        <input onChange={(e)=>{setEmail(e.target.value)}} value={email}
