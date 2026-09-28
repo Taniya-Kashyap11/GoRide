@@ -3,13 +3,14 @@ const userService=require('../services/userService');
 const User = require('../Models/User');
 const blacklistToken = require('../Models/blacklistToken');
 async function registerUser(req,res,next) {
-    const errors=validationResult(req);
+    try{
+          const errors=validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()});
     }
     const {fullname,email,password}=req.body;
       const isUserAlreadyExist = await User.findOne({email});
-        if(isUserlreadyExist){
+        if(isUserAlreadyExist){
             return res.status(400).json({message:"User already exist"});
         }
     const hashedPassword=await User.hashPassword(password);
@@ -21,6 +22,10 @@ async function registerUser(req,res,next) {
     })
     const token=user.generateAuthToken();
     res.status(201).json({token,user})
+    }catch(err){
+        console.log("Error :",err);
+    }
+  
 }
 async function loginUser(req,res,next){
     const errors=validationResult(req);
@@ -37,7 +42,11 @@ async function loginUser(req,res,next){
         return res.status(401).json({message:"Invalid email or password"});
     }
     const token=user.generateAuthToken();
-    res.cookie('token',token)
+     res.cookie('token', token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax'
+    });
     res.status(200).json({token,user});
 }
 async function userProfile(req,res,next){
