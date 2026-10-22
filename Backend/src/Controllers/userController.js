@@ -2,6 +2,17 @@ const { validationResult } = require('express-validator');
 const userService=require('../services/userService');
 const User = require('../Models/User');
 const blacklistToken = require('../Models/blacklistToken');
+
+const authCookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+};
+
+function setUserAuthCookie(res, token) {
+    res.cookie('userToken', token, authCookieOptions);
+}
 async function registerUser(req,res,next) {
     try{
           const errors=validationResult(req);
@@ -21,6 +32,7 @@ async function registerUser(req,res,next) {
         password:hashedPassword
     })
     const token=user.generateAuthToken();
+    setUserAuthCookie(res, token);
     res.status(201).json({token,user})
     }catch(err){
         console.log("Error :",err);
@@ -42,21 +54,27 @@ async function loginUser(req,res,next){
         return res.status(401).json({message:"Invalid email or password"});
     }
     const token=user.generateAuthToken();
-     res.cookie('token', token, {
-        httpOnly: true,
-        secure: false,
-        sameSite: 'lax'
-    });
+     setUserAuthCookie(res, token);
     res.status(200).json({token,user});
 }
 async function userProfile(req,res,next){
         res.status(200).json({user:req.user});
 }
-async function logoutUser(req,res,next){
-        res.clearCookie('token');
-        const token=req.cookies.token || req.headers.authorization.split(' ')[1];
-        await blacklistToken.create({token});
-        res.status(200).json({message : 'Logged out'});
+async function logoutUser(req, res, next) {
+    try {
+        res.clearCookie('userToken', { ...authCookieOptions });
+        const authorization = req.headers.authorization;
+        const token = req.cookies?.userToken ||
+            (authorization && authorization.startsWith('Bearer ') ? authorization.slice(7).trim() : null);
+
+        if (token) {
+            await blacklistToken.create({ token });
+        }
+
+        return res.status(200).json({ message: 'Logged out' });
+    } catch (error) {
+        return next(error);
+    }
 }
 module.exports={
     registerUser,

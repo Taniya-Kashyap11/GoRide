@@ -1,0 +1,381 @@
+
+.goride-page {
+  --green: #21854a;
+  --green-dark: #17683a;
+  --green-light: #edf6ef;
+  --text: #202b24;
+  --muted: #707a72;
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+.goride-navbar {
+  background: #fff;
+  border-bottom: 1px solid #edf0ed;
+}
+
+.goride-logo {
+  width: 125px;
+  max-height: 48px;
+  object-fit: contain;
+}
+
+.goride-nav-links {
+  gap: 25px;
+}
+
+.goride-nav-links .nav-link {
+  color: #525d55;
+  font-size: 14px;
+  padding: 24px 0;
+}
+
+.goride-nav-links .nav-link:hover,
+.goride-nav-links .nav-link.active {
+  color: var(--green);
+}
+
+.login-btn,
+.signup-btn {
+  border-radius: 7px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-section {
+  padding: 65px 0 80px;
+  background: #f7faf7;
+}
+
+.section-label {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.hero-title {
+  margin: 20px 0;
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+  font-weight: 750;
+}
+
+.hero-title span {
+  color: var(--green);
+}
+
+.hero-description {
+  max-width: 440px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.primary-btn {
+  background: var(--green);
+  border-color: var(--green);
+  border-radius: 7px;
+  padding: 12px 19px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.primary-btn:hover {
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+}
+
+.learn-link {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-image-wrapper {
+  position: relative;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-caption {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.icon-box {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: var(--green);
+  background: var(--green-light);
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.hero-caption h6 {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero-caption small {
+  font-size: 11px;
+}
+
+.booking-section {
+  position: relative;
+  margin-top: -25px;
+}
+
+.booking-card {
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(30, 55, 36, 0.08);
+}
+
+.booking-card .card-body {
+  padding: 25px;
+}
+
+.booking-title {
+  margin: 8px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.booking-icon {
+  color: var(--green);
+  font-size: 26px;
+}
+
+.booking-card .form-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.location-field {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 10px;
+  border: 1px solid #dfe6df;
+  border-radius: 7px;
+}
+
+.location-field:focus-within {
+  border-color: var(--green);
+}
+
+.location-field .form-control {
+  min-width: 0;
+  padding: 12px 0;
+  border: 0;
+  box-shadow: none;
+  font-size: 13px;
+}
+
+.pickup-icon {
+  color: var(--green);
+}
+
+.destination-icon {
+  color: #d95757;
+}
+
+.booking-card .form-select {
+  min-height: 45px;
+  border-color: #dfe6df;
+  font-size: 13px;
+}
+
+.search-btn {
+  min-height: 45px;
+}
+
+.content-section,
+.rides-section {
+  padding: 75px 0;
+}
+
+.section-heading {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 12px 0;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.feature-card,
+.ride-card {
+  border: 1px solid #e8ede8;
+  border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.feature-card:hover,
+.ride-card:hover {
+  border-color: #b5d8bd;
+  transform: translateY(-3px);
+}
+
+.feature-card .card-body {
+  padding: 23px;
+}
+
+.feature-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 23px;
+}
+
+.feature-number {
+  color: #a0aaa2;
+  font-size: 12px;
+}
+
+.feature-card .card-title,
+.ride-card .card-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.feature-card .card-text,
+.ride-card .card-text {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.rides-section {
+  background: #f7faf7;
+}
+
+.ride-card {
+  background: #fff;
+}
+
+.ride-card .card-body {
+  padding: 15px;
+}
+
+.ride-image {
+  display: grid;
+  place-items: center;
+  height: 115px;
+  background: #f8faf8;
+  border-radius: 7px;
+}
+
+.ride-image .card-img-top {
+  width: 90%;
+  height: 100px;
+  object-fit: contain;
+}
+
+.ride-link {
+  flex-shrink: 0;
+  color: var(--green);
+  border: 1px solid #e8ede8;
+  border-radius: 50%;
+}
+
+.ride-link:hover {
+  color: #fff;
+  background: var(--green);
+}
+
+.goride-footer {
+  padding: 25px 0;
+  border-top: 1px solid #edf0ed;
+}
+
+.goride-footer p,
+.goride-footer small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.footer-logo {
+  width: 100px;
+}
+
+@media (max-width: 991px) {
+  .goride-nav-links {
+    gap: 12px;
+  }
+
+  .goride-nav-links .nav-link {
+    padding: 10px 0;
+  }
+
+  .nav-actions {
+    padding: 10px 0 15px;
+  }
+
+  .hero-image {
+    height: 300px;
+  }
+
+  .booking-section {
+    margin-top: -15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    padding: 45px 0 55px;
+  }
+
+  .hero-title {
+    font-size: 43px;
+  }
+
+  .hero-image {
+    height: 250px;
+  }
+
+  .booking-card .card-body {
+    padding: 18px;
+  }
+
+  .booking-title {
+    font-size: 19px;
+  }
+
+  .content-section,
+  .rides-section {
+    padding: 55px 0;
+  }
+
+  .goride-footer {
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin-bottom: 8px;
+  }
+}

@@ -1,7 +1,17 @@
-const Captain=require("../Models/Captain")
-const captainService=require('../services/captainService');
+const Captain=require ('../Models/Captain.js');
+const captainService=require('../services/captainService.js');
 const {validationResult}=require("express-validator");
-const blacklistToken=require("../Models/blacklistToken");
+const blacklistToken=require("../Models/blacklistToken.js");
+
+const authCookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+};
+function setCaptainAuthCookie(res, token) {
+    res.cookie("captainToken", token, authCookieOptions);
+}
 async function registerCaptain(req,res,next){
     const errors=validationResult(req);
     if(!errors.isEmpty()){
@@ -24,6 +34,7 @@ async function registerCaptain(req,res,next){
         vehicleType:vehicle.vehicleType
     })
     const token= captain.generateAuthToken();
+    setCaptainAuthCookie(res, token);
     res.status(201).json({token,captain});
 }
 async function loginCaptain(req,res,next){
@@ -41,17 +52,27 @@ async function loginCaptain(req,res,next){
         return res.status(401).json({message:"Invalid email or password"});
     }
     const token=captain.generateAuthToken();
-    res.cookie('token',token);
+    setCaptainAuthCookie(res, token);
     res.status(200).json({token,captain});
 }
 async function getCaptainProfile(req,res,next){
     res.status(200).json({captain:req.captain});
 }
-async function logoutCaptain(req,res,next){
-      res.clearCookie('token');
-        const token=req.cookies.token || req.headers.authorization.split(' ')[1];
-        await blacklistToken.create({token});
-        res.status(200).json({message : 'Logged out'});
+async function logoutCaptain(req, res, next) {
+    try {
+        res.clearCookie("captainToken", { ...authCookieOptions });
+        const authorization = req.headers.authorization;
+        const token = req.cookies?.captainToken ||
+            (authorization && authorization.startsWith("Bearer ") ? authorization.slice(7).trim() : null);
+
+        if (token) {
+            await blacklistToken.create({ token });
+        }
+
+        return res.status(200).json({ message: "Logged out" });
+    } catch (error) {
+        return next(error);
+    }
 }
 module.exports={
     registerCaptain,

@@ -1,0 +1,607 @@
+
+.captain-dashboard {
+  --captain-green: #16794b;
+  --captain-green-dark: #105d39;
+  --captain-bg: #f6f8f6;
+  --captain-text: #202923;
+  --captain-muted: #7b857e;
+  min-height: 100vh;
+  background: var(--captain-bg);
+  color: var(--captain-text);
+  font-family: inherit;
+}
+
+.captain-container {
+  padding-top: 36px;
+  padding-bottom: 24px;
+  max-width: 1320px;
+}
+
+.captain-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.captain-eyebrow,
+.section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--captain-green);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 1.15px;
+  margin-bottom: 9px;
+}
+
+.captain-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #27a366;
+}
+
+.captain-page-header h1 {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 750;
+  letter-spacing: -1px;
+  margin-bottom: 7px;
+}
+
+.captain-page-header p,
+.captain-section-header p {
+  color: var(--captain-muted);
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.captain-refresh-btn {
+  border: 1px solid #e2e8e2;
+  border-radius: 10px;
+  padding: 11px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #344039;
+  font-size: 13px;
+  font-weight: 650;
+  background: #fff;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.captain-refresh-btn:hover,
+.captain-refresh-btn:focus {
+  background: #edf4ee;
+  border-color: #c9ddcd;
+  color: var(--captain-green-dark);
+}
+
+.captain-summary-row {
+  margin-bottom: 34px;
+}
+
+.captain-summary-card {
+  background: #fff;
+  border: 1px solid #e8ede8;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px rgba(28, 54, 35, 0.025);
+}
+
+.captain-summary-card .card-body {
+  padding: 21px;
+}
+
+.summary-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  font-size: 17px;
+  margin-bottom: 17px;
+}
+
+.summary-green {
+  color: #197448;
+  background: #e9f5ed;
+}
+
+.summary-blue {
+  color: #376fba;
+  background: #edf3fc;
+}
+
+.summary-yellow {
+  color: #9b7620;
+  background: #fbf4df;
+}
+
+.summary-purple {
+  color: #7956a8;
+  background: #f2ecfa;
+}
+
+.summary-label,
+.metric-label {
+  display: block;
+  color: var(--captain-muted);
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.captain-summary-card h3 {
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.6px;
+  margin: 8px 0 4px;
+  overflow-wrap: anywhere;
+}
+
+.captain-summary-card h3.summary-text {
+  font-size: 21px;
+  letter-spacing: -0.3px;
+}
+
+.captain-summary-card p {
+  color: var(--captain-muted);
+  font-size: 11px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.captain-section {
+  margin-top: 36px;
+}
+
+.captain-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 21px;
+}
+
+.captain-section-header .section-kicker {
+  margin-bottom: 6px;
+}
+
+.captain-section-header h2 {
+  font-size: clamp(21px, 2.5vw, 25px);
+  font-weight: 750;
+  letter-spacing: -0.55px;
+  margin-bottom: 7px;
+}
+
+.captain-count-badge {
+  padding: 9px 13px;
+  border: 1px solid #e3e9e3;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.captain-ride-card {
+  background: #fff;
+  border: 1px solid #e5ebe5;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(28, 54, 35, 0.035);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.captain-ride-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 24px rgba(28, 54, 35, 0.075);
+}
+
+.captain-ride-card .card-body {
+  padding: 23px;
+}
+
+.ride-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 19px;
+}
+
+.ride-type-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eaf5ed;
+  color: var(--captain-green);
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.ride-card-header h3 {
+  font-size: 16px;
+  font-weight: 750;
+  text-transform: capitalize;
+  margin: 0 0 5px;
+}
+
+.ride-date {
+  color: var(--captain-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ride-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 7px 9px;
+  border-radius: 7px;
+  white-space: nowrap;
+}
+
+.passenger-strip {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px;
+  margin-bottom: 21px;
+  border-radius: 11px;
+  background: #f8faf8;
+}
+
+.passenger-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e5eee7;
+  color: var(--captain-green);
+}
+
+.passenger-strip .route-label {
+  font-size: 10px;
+}
+
+.passenger-strip p {
+  font-size: 13px;
+  font-weight: 650;
+  margin: 3px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.captain-route {
+  padding: 2px 0 3px;
+  margin-bottom: 20px;
+}
+
+.captain-route-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.route-dot {
+  display: block;
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  margin: 4px 0 0 3px;
+  border: 3px solid;
+  border-radius: 50%;
+}
+
+.pickup-dot {
+  border-color: #1c9a5d;
+  background: #e0f4e7;
+}
+
+.destination-dot {
+  border-color: #dc735f;
+  background: #fce9e5;
+}
+
+.route-connector {
+  height: 22px;
+  margin: 0 0 0 8px;
+  border-left: 1px dashed #cbd5cc;
+}
+
+.route-label {
+  display: block;
+  color: var(--captain-muted);
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.7px;
+}
+
+.route-address {
+  color: #354038;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.captain-ride-metrics {
+  margin-bottom: 21px;
+}
+
+.metric-box {
+  height: 100%;
+  padding: 12px 10px;
+  background: #f8faf8;
+  border: 1px solid #edf0ed;
+  border-radius: 10px;
+}
+
+.metric-icon {
+  display: block;
+  font-size: 13px;
+  color: var(--captain-green);
+  margin-bottom: 9px;
+}
+
+.metric-label {
+  font-size: 9px;
+  letter-spacing: 0.55px;
+  margin-bottom: 5px;
+}
+
+.metric-box strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.captain-primary-btn,
+.captain-complete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  min-height: 45px;
+  border: 1px solid var(--captain-green);
+  border-radius: 10px;
+  background: var(--captain-green);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.captain-primary-btn:hover,
+.captain-primary-btn:focus {
+  background: var(--captain-green-dark);
+  border-color: var(--captain-green-dark);
+}
+
+.captain-primary-btn:disabled,
+.captain-complete-btn:disabled {
+  opacity: 0.65;
+}
+
+.captain-complete-btn {
+  background: #fff;
+  border-color: #c7dfcf;
+  color: var(--captain-green-dark);
+}
+
+.captain-complete-btn:hover,
+.captain-complete-btn:focus {
+  background: #eaf5ed;
+  border-color: #a9cfb6;
+  color: var(--captain-green-dark);
+}
+
+.captain-empty-card {
+  border: 1px dashed #d5dfd6;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  box-shadow: none;
+}
+
+.captain-empty-card .card-body {
+  padding: 42px 20px;
+}
+
+.empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 16px;
+  background: #eaf5ed;
+  border-radius: 15px;
+  color: var(--captain-green);
+  font-size: 23px;
+}
+
+.captain-empty-card h5 {
+  font-size: 16px;
+  font-weight: 750;
+  margin-bottom: 8px;
+}
+
+.captain-empty-card p {
+  max-width: 380px;
+  margin: 0 auto 17px;
+  color: var(--captain-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.captain-empty-card .btn {
+  padding: 9px 14px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.captain-loading {
+  padding: 45px 15px;
+  text-align: center;
+  color: var(--captain-green);
+}
+
+.captain-loading .spinner-border {
+  width: 30px;
+  height: 30px;
+}
+
+.captain-loading p {
+  margin: 13px 0 0;
+  color: var(--captain-muted);
+  font-size: 13px;
+}
+
+.captain-alert {
+  border-radius: 11px;
+  font-size: 13px;
+}
+
+.completed-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  background: #edf7ef;
+  border-radius: 10px;
+  color: var(--captain-green-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.captain-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 48px;
+  padding: 19px 0;
+  border-top: 1px solid #e4eae4;
+  color: var(--captain-muted);
+  font-size: 11px;
+}
+
+.captain-footer span:first-child {
+  color: var(--captain-green-dark);
+  font-weight: 750;
+}
+
+.spin-icon {
+  animation: captain-spin 1s linear infinite;
+}
+
+@keyframes captain-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .captain-container {
+    padding-top: 25px;
+  }
+
+  .captain-page-header {
+    align-items: flex-start;
+    margin-bottom: 23px;
+  }
+
+  .captain-page-header h1 {
+    font-size: 27px;
+  }
+
+  .captain-page-header > .captain-refresh-btn {
+    width: 100%;
+  }
+
+  .captain-summary-row {
+    margin-bottom: 25px;
+  }
+
+  .captain-summary-card .card-body {
+    padding: 15px;
+  }
+
+  .summary-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 12px;
+  }
+
+  .captain-summary-card h3 {
+    font-size: 23px;
+  }
+
+  .captain-summary-card h3.summary-text {
+    font-size: 17px;
+  }
+
+  .captain-section {
+    margin-top: 29px;
+  }
+
+  .captain-section-header {
+    align-items: flex-start;
+  }
+
+  .captain-ride-card .card-body {
+    padding: 17px;
+  }
+
+  .ride-card-header {
+    gap: 9px;
+  }
+
+  .ride-type-icon {
+    width: 39px;
+    height: 39px;
+    font-size: 17px;
+  }
+
+  .ride-card-header h3 {
+    font-size: 14px;
+  }
+
+  .ride-status-badge {
+    padding: 6px 7px;
+    font-size: 9px;
+  }
+
+  .metric-box {
+    padding: 10px 7px;
+  }
+
+  .metric-box strong {
+    font-size: 11px;
+  }
+
+  .captain-footer {
+    margin-top: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .captain-dashboard *,
+  .captain-dashboard *::before,
+  .captain-dashboard *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

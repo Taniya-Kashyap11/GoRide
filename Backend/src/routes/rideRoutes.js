@@ -1,0 +1,15 @@
+const express = require("express");
+const router = express.Router();
+const {authUser}= require("../middlewares/auth.js");
+const { authCaptain } = require("../middlewares/auth.js");
+const {createRide,getRides,cancelRide,acceptRide, assignRide,availableRides,startAcceptedRide,completeOngoingRide,getUserRides}=require("../Controllers/rideController.js");
+router.post("/", authUser, createRide);
+router.get("/my-rides", authUser,getUserRides);
+router.patch("/:id/cancel", authUser, cancelRide);
+router.get("/available", authCaptain, availableRides);
+router.patch("/:id/accept", authCaptain, acceptRide);
+router.get("/captain/my-rides", authCaptain, assignRide);
+router.patch("/:id/start", authCaptain, startAcceptedRide);
+router.patch("/:id/complete", authCaptain, completeOngoingRide);
+// router.get("/user", authUser, getUserRides);
+module.exports = router;
